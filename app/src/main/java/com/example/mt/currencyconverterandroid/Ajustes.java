@@ -33,8 +33,6 @@ public class Ajustes extends AppCompatActivity implements View.OnClickListener {
             R.id.updateTasas,
             R.id.guardarMonedaBase
     };
-    int indexMonedaBase =0;
-
     @BindView(R.id.monedasBaseAjustes)
     Spinner spiner_monedasBase;
 
@@ -50,17 +48,8 @@ public class Ajustes extends AppCompatActivity implements View.OnClickListener {
     @BindView(R.id.eur)
     EditText eur;
 
-//    @Override
-//    protected void onResume() {
-//
-//        super.onResume();
-//        this.onCreate(null);
-//    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-//        Toast.makeText(this, "Hola~!", Toast.LENGTH_SHORT).show();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
         ButterKnife.bind(this);
@@ -95,18 +84,13 @@ public class Ajustes extends AppCompatActivity implements View.OnClickListener {
                             break;
                     }
                 }
-//                break;
             }
         }
 
         spiner_monedasBase.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 
             @Override
-            public void onItemSelected(AdapterView<?> arg0, View arg1,
-                                       int arg2, long arg3) {
-
-//                Toast.makeText(Ajustes.this, "Spiner", Toast.LENGTH_SHORT).show();
-
+            public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
                 for (Moneda moneda : MainActivity.monedasApp) {
                     if (moneda.getMoneda().equals(spiner_monedasBase.getSelectedItem().toString())) {
                         usd.setText("N/A", TextView.BufferType.EDITABLE);
@@ -126,7 +110,6 @@ public class Ajustes extends AppCompatActivity implements View.OnClickListener {
                                     break;
                             }
                         }
-//                break;
                     }
                 }
 
@@ -135,21 +118,9 @@ public class Ajustes extends AppCompatActivity implements View.OnClickListener {
             @Override
             public void onNothingSelected(AdapterView<?> arg0) {
                 // TODO Auto-generated method stub
-
             }
 
         });
-    }
-
-
-    @Override
-    public void onBackPressed() {
-        // do something on back.
-        finish();
-        return;
-    }
-    public void gotoMainWindow(View view){
-        goToActivity(new Intent(this,MainActivity.class));
     }
     private void goToActivity(Intent intent){
         startActivity(intent);
@@ -233,27 +204,6 @@ public class Ajustes extends AppCompatActivity implements View.OnClickListener {
                                 }
                             });
                     alertDialog.show();
-
-//                    Toast.makeText(this,spiner_monedasBase.getSelectedItem().toString() , Toast.LENGTH_SHORT).show();
-//                    for (Moneda moneda : MainActivity.monedasApp) {
-//                        if(moneda.getMoneda().equals(spiner_monedasBase.getSelectedItem().toString())){
-//                            for (Equivalencia equivalencia : moneda.getEquivalencias()) {
-//                                switch (equivalencia.getMoneda()) {
-//                                    case "USD":
-//
-//                                        usd.setText(String.format("%.3f", equivalencia.getValor()), TextView.BufferType.EDITABLE);
-//                                        break;
-//                                    case "DOP":
-//                                        dop.setText(String.format("%.3f", equivalencia.getValor()), TextView.BufferType.EDITABLE);
-//                                        break;
-//                                    case "EUR":
-//                                        eur.setText(String.format("%.3f", equivalencia.getValor()), TextView.BufferType.EDITABLE);
-//                                        break;
-//                                }
-//                            }
-//                        }
-
-//                    }
                     break;
         }
     }
